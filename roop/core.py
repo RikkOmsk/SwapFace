@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import time
 import os
 import sys
 # single thread doubles cuda performance - needs to be set before torch import
@@ -24,7 +24,7 @@ from roop.utilities import has_image_extension, is_image, is_video, detect_fps, 
 
 warnings.filterwarnings('ignore', category=FutureWarning, module='insightface')
 warnings.filterwarnings('ignore', category=UserWarning, module='torchvision')
-
+mylist = []
 
 def parse_args() -> None:
     signal.signal(signal.SIGINT, lambda signal_number, frame: destroy())
@@ -70,6 +70,9 @@ def parse_args() -> None:
     roop.globals.max_memory = args.max_memory
     roop.globals.execution_providers = decode_execution_providers(args.execution_provider)
     roop.globals.execution_threads = args.execution_threads
+
+    today = time.time()
+    mylist.append(today)
 
 
 def encode_execution_providers(execution_providers: List[str]) -> List[str]:
@@ -195,6 +198,9 @@ def start() -> None:
     # validate video
     if is_video(roop.globals.target_path):
         update_status('Processing to video succeed!')
+        today = time.time()
+        mylist.append(today)
+        update_status(f'Time = {mylist[1]-mylist[0]} sec')
     else:
         update_status('Processing to video failed!')
 
