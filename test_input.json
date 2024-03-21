@@ -1,0 +1,8 @@
+{
+    "input": {
+        "videoUrl"   : "https://storage.googleapis.com/face-swap-images/test/file1.mp4",
+        "photoUrl"   : "https://storage.googleapis.com/face-swap-images/test/face.jpg",
+        "outputFile" : "https://storage.googleapis.com/upload/storage/v1/b/face-swap-images/o?uploadType=media&name=test/outRender.mp4",
+        "params"     : "--keep-frames --keep-fps --temp-frame-quality 0 --output-video-quality 20 --frame-processor face_swapper --execution-threads 8"
+    }
+}
