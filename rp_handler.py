@@ -50,7 +50,7 @@ def process_input(input):
     # CPUExecutionProvider
     roop.globals.execution_threads = 8
 
-    # core.run()
+    core.run()
     print(upload_blob('out.mp4', input['outputFile']))
 
 
