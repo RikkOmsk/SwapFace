@@ -13,6 +13,7 @@ RUN apt update && \
       python3-dev \
       python3-pip \
       python3.10-venv \
+      python3-tk \
       fonts-dejavu-core \
       rsync \
       git \
