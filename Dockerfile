@@ -26,7 +26,7 @@ RUN apt-get update --yes && \
 WORKDIR /workspace
 
 COPY requirements.txt . 
-RUN pip install --upgrade --force-reinstall  torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip install --no-cache-dir torch==2.2.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip uninstall -y onnxruntime && \
     pip install onnxruntime-gpu
