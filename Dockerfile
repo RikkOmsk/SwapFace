@@ -22,7 +22,9 @@ RUN ln -s /usr/bin/python3.10 /usr/bin/python && \
 WORKDIR /workspace
 COPY requirements.txt . 
 RUN pip install --upgrade --force-reinstall  torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-RUN pip install --upgrade --no-cache-dir -r requirements.txt
+RUN pip install --upgrade --no-cache-dir -r requirements.txt && \
+    pip uninstall -y onnxruntime && \
+    pip install onnxruntime-gpu
 RUN pip install --no-cache-dir runpod
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \ 
 	echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
