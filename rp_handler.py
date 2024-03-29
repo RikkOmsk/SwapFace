@@ -42,16 +42,19 @@ def process_input(input):
         roop.globals.many_faces = "store_true"
         
     
-    roop.globals.reference_face_position = 0
-    roop.globals.reference_frame_number = 0
-    roop.globals.similar_face_distance = 0.85
+    roop.globals.reference_face_position = input['referenceFacePosition']
+    roop.globals.reference_frame_number = input['referenceFrameNumber']
+    roop.globals.similar_face_distance = input['similarFaceDistance']
     roop.globals.execution_providers = ['CUDAExecutionProvider']
+    roop.globals.output_video_quality = input['outputVideoQuality']
+    roop.globals.output_video_encoder = input['outputVideoEncoder']
     # CoreMLExecutionProvider
     # CPUExecutionProvider
-    roop.globals.execution_threads = 8
+    roop.globals.execution_threads = input['executionThreads']
 
     core.run()
-    print(upload_blob('out.mp4', input['outputFile']))
+    outputFile = "generation/" + input['userID'] + "/" + input['documentID'] + input['fileFormat']
+    print(upload_blob('out.mp4', outputFile))
 
 
     return {

@@ -65,8 +65,8 @@ def parse_args() -> None:
     # roop.globals.similar_face_distance = args.similar_face_distance
     roop.globals.temp_frame_format = args.temp_frame_format
     roop.globals.temp_frame_quality = args.temp_frame_quality
-    roop.globals.output_video_encoder = args.output_video_encoder
-    roop.globals.output_video_quality = args.output_video_quality
+    # roop.globals.output_video_encoder = args.output_video_encoder
+    # roop.globals.output_video_quality = args.output_video_quality
     roop.globals.max_memory = args.max_memory
     # roop.globals.execution_providers = decode_execution_providers(args.execution_provider)
     # roop.globals.execution_threads = args.execution_threads
