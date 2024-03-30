@@ -60,10 +60,6 @@ RUN    cd /root && mkdir -p .insightface/models/buffalo_l && \
     wget https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip && \
     unzip buffalo_l.zip && \
     rm -f buffalo_l.zip 
-#Install opennsfw2/
-RUN    cd /root && mkdir -p .opennsfw2/weights && \
-    cd .opennsfw2/weights && \	
-    wget  https://github.com/bhky/opennsfw2/releases/download/v0.1.0/open_nsfw_weights.h5
 
 RUN mkdir -p /workspace/gfpgan/weights && \
     cd /workspace/gfpgan/weights && \
