@@ -30,7 +30,7 @@ def process_input(input):
     wget.download(input['videoUrl'])
     wget.download(input['photoUrl'])
 
-    facefusion.globals.source_paths = input['photoUrlF']
+    facefusion.globals.source_paths = [input['photoUrlF']]
     facefusion.globals.target_path = input['videoUrlF']
     facefusion.globals.output_path = "./out.mp4"
 
