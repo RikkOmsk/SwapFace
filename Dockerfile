@@ -39,7 +39,7 @@ COPY requirements.txt .
 RUN pip install --upgrade --force-reinstall  torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install --upgrade --no-cache-dir -r requirements.txt && \
     pip uninstall -y onnxruntime && \
-    pip install onnxruntime-gpu
+    pip install onnxruntime-gpu 1.16.3
 RUN pip install --no-cache-dir runpod
 RUN pip install --no-cache-dir wget
 RUN pip install --no-cache-dir google-cloud

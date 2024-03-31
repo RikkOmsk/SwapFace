@@ -109,17 +109,17 @@ def cli() -> None:
 def apply_args(program : ArgumentParser) -> None:
 	args = program.parse_args()
 	# general
-	facefusion.globals.source_paths = args.source_paths
-	facefusion.globals.target_path = args.target_path
-	facefusion.globals.output_path = args.output_path
+	# facefusion.globals.source_paths = args.source_paths
+	# facefusion.globals.target_path = args.target_path
+	# facefusion.globals.output_path = args.output_path
 	# misc
 	facefusion.globals.skip_download = args.skip_download
-	facefusion.globals.headless = args.headless
+	# facefusion.globals.headless = args.headless
 	facefusion.globals.log_level = args.log_level
 	# execution
-	facefusion.globals.execution_providers = decode_execution_providers(args.execution_providers)
-	facefusion.globals.execution_thread_count = args.execution_thread_count
-	facefusion.globals.execution_queue_count = args.execution_queue_count
+	# facefusion.globals.execution_providers = decode_execution_providers(args.execution_providers)
+	# facefusion.globals.execution_thread_count = args.execution_thread_count
+	# facefusion.globals.execution_queue_count = args.execution_queue_count
 	# memory
 	facefusion.globals.video_memory_strategy = args.video_memory_strategy
 	facefusion.globals.system_memory_limit = args.system_memory_limit

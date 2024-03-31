@@ -24,8 +24,8 @@ def process_input(input):
     Execute the application code
     """
 
-    manyFaces = input['many_faces']
-    face      = input['frame_processors']
+    # manyFaces = input['many_faces']
+    # face      = input['frame_processors']
 
     wget.download(input['videoUrl'])
     wget.download(input['photoUrl'])
