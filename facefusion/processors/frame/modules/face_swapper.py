@@ -161,14 +161,14 @@ def register_args(program : ArgumentParser) -> None:
 
 def apply_args(program : ArgumentParser) -> None:
 	args = program.parse_args()
-	frame_processors_globals.face_swapper_model = args.face_swapper_model
-	if args.face_swapper_model == 'blendswap_256':
+	# frame_processors_globals.face_swapper_model = args.face_swapper_model
+	if frame_processors_globals.face_swapper_model == 'blendswap_256':
 		facefusion.globals.face_recognizer_model = 'arcface_blendswap'
-	if args.face_swapper_model == 'inswapper_128' or args.face_swapper_model == 'inswapper_128_fp16':
+	if frame_processors_globals.face_swapper_model == 'inswapper_128' or frame_processors_globals.face_swapper_model == 'inswapper_128_fp16':
 		facefusion.globals.face_recognizer_model = 'arcface_inswapper'
-	if args.face_swapper_model == 'simswap_256' or args.face_swapper_model == 'simswap_512_unofficial':
+	if frame_processors_globals.face_swapper_model == 'simswap_256' or frame_processors_globals.face_swapper_model == 'simswap_512_unofficial':
 		facefusion.globals.face_recognizer_model = 'arcface_simswap'
-	if args.face_swapper_model == 'uniface_256':
+	if frame_processors_globals.face_swapper_model == 'uniface_256':
 		facefusion.globals.face_recognizer_model = 'arcface_uniface'
 
 

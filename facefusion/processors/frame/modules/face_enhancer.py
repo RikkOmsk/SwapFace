@@ -126,8 +126,8 @@ def register_args(program : ArgumentParser) -> None:
 
 def apply_args(program : ArgumentParser) -> None:
 	args = program.parse_args()
-	frame_processors_globals.face_enhancer_model = args.face_enhancer_model
-	frame_processors_globals.face_enhancer_blend = args.face_enhancer_blend
+	# frame_processors_globals.face_enhancer_model = args.face_enhancer_model
+	# frame_processors_globals.face_enhancer_blend = args.face_enhancer_blend
 
 
 def pre_check() -> bool:

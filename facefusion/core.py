@@ -173,7 +173,7 @@ def apply_args(program : ArgumentParser) -> None:
 	facefusion.globals.skip_audio = args.skip_audio
 	# frame processors
 	available_frame_processors = list_directory('facefusion/processors/frame/modules')
-	facefusion.globals.frame_processors = args.frame_processors
+	# facefusion.globals.frame_processors = args.frame_processors
 	for frame_processor in available_frame_processors:
 		frame_processor_module = load_frame_processor_module(frame_processor)
 		frame_processor_module.apply_args(program)

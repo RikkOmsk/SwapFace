@@ -3,7 +3,7 @@ import os
 import sys
 import wget
 import facefusion.globals
-import facefusion.processors.frame.globals
+from facefusion.processors.frame import globals as frame_processors_globals
 from google.cloud import storage
 from facefusion import core
 
@@ -24,8 +24,7 @@ def process_input(input):
     Execute the application code
     """
 
-    # manyFaces = input['many_faces']
-    # face      = input['frame_processors']
+    face = input['frame_processors']
 
     wget.download(input['videoUrl'])
     wget.download(input['photoUrl'])
@@ -39,6 +38,14 @@ def process_input(input):
     facefusion.globals.execution_thread_count = input['threadCount']
     facefusion.globals.execution_queue_count = input['queueCount']
     facefusion.processors.frame.globals.face_swapper_model = input['faceSwapperModel']
+
+    if face == "face_enhancer":
+        facefusion.globals.frame_processors = ['face_swapper', 'face_enhancer']
+    else:
+        facefusion.globals.frame_processors = ['face_swapper']
+
+    facefusion.processors.frame.globals.face_enhancer_model = input['faceEnhancerModel']
+    facefusion.processors.frame.globals.face_enhancer_blend = input['faceEnhancerBlend']
     
 
     core.cli()

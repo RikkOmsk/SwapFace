@@ -54,7 +54,11 @@ COPY tests tests/
 COPY facefusion facefusion/
 RUN mkdir models
 
+
 #Download Models 
+# wget https://github.com/facefusion/facefusion-assets/releases/download/models/simswap_256.onnx -P .assets/models/ && \
+# 
+# 
 RUN wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_occluder.onnx -P .assets/models/ && \
 	wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_parser.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/codeformer.onnx -P .assets/models/ && \
@@ -67,7 +71,7 @@ RUN wget https://github.com/facefusion/facefusion-assets/releases/download/model
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_w600k_r50.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_simswap.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/2dfan4.onnx -P .assets/models/ && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/simswap_256.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/gender_age.onnx -P .assets/models/
 
 ENTRYPOINT ./start.sh 
