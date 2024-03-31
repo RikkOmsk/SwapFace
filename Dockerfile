@@ -48,21 +48,25 @@ RUN pip install --upgrade google-cloud-storage
 COPY start.sh . 
 COPY run.py .
 COPY rp_handler.py . 
-COPY roop roop/
+COPY facefusion.ini .
+COPY install.py .
+COPY tests tests/
+COPY facefusion facefusion/
 RUN mkdir models
 
 #Download Models 
-RUN wget https://github.com/TencentARC/GFPGAN/releases/download/v1.3.4/GFPGANv1.4.pth -P models/ && \
-	wget https://huggingface.co/CountFloyd/deepfake/resolve/main/inswapper_128.onnx -P models/
-#Install buffalo
-RUN    cd /root && mkdir -p .insightface/models/buffalo_l && \
-    cd .insightface/models/buffalo_l && \	
-    wget https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip && \
-    unzip buffalo_l.zip && \
-    rm -f buffalo_l.zip 
+RUN wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_occluder.onnx -P .assets/models/ && \
+	wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_parser.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/codeformer.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/gfpgan_1.4.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/open_nsfw.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/retinaface_10g.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/scrfd_2.5g.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/yoloface_8n.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/yunet_2023mar.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_w600k_r50.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_simswap.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/2dfan4.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/gender_age.onnx -P .assets/models/
 
-RUN mkdir -p /workspace/gfpgan/weights && \
-    cd /workspace/gfpgan/weights && \
-    wget https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth && \
-    wget https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth 
 ENTRYPOINT ./start.sh 

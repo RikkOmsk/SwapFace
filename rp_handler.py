@@ -2,9 +2,10 @@ import runpod
 import os
 import sys
 import wget
-import roop.globals
+import facefusion.globals
+import facefusion.processors.frame.globals
 from google.cloud import storage
-from roop import core
+from facefusion import core
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/opt/creds.json"
 # /opt/creds.json 
@@ -29,30 +30,18 @@ def process_input(input):
     wget.download(input['videoUrl'])
     wget.download(input['photoUrl'])
 
-    roop.globals.source_path = input['photoUrlF']
-    roop.globals.target_path = input['videoUrlF']
-    roop.globals.output_path = "out.mp4"
+    facefusion.globals.source_paths = input['photoUrlF']
+    facefusion.globals.target_path = input['videoUrlF']
+    facefusion.globals.output_path = "./out.mp4"
 
-    if face == "face_enhancer":
-        roop.globals.frame_processors = [ 'face_swapper', 'face_enhancer']
-    else:
-        roop.globals.frame_processors = [ 'face_swapper']
+    facefusion.globals.headless = True
+    facefusion.globals.execution_providers = ['CUDAExecutionProvider']
+    facefusion.globals.execution_thread_count = input['threadCount']
+    facefusion.globals.execution_queue_count = input['queueCount']
+    facefusion.processors.frame.globals.face_swapper_model = input['faceSwapperModel']
     
-    if manyFaces == "true":
-        roop.globals.many_faces = "store_true"
-        
-    
-    roop.globals.reference_face_position = input['referenceFacePosition']
-    roop.globals.reference_frame_number = input['referenceFrameNumber']
-    roop.globals.similar_face_distance = input['similarFaceDistance']
-    roop.globals.execution_providers = ['CUDAExecutionProvider']
-    roop.globals.output_video_quality = input['outputVideoQuality']
-    roop.globals.output_video_encoder = input['outputVideoEncoder']
-    # CoreMLExecutionProvider
-    # CPUExecutionProvider
-    roop.globals.execution_threads = input['executionThreads']
 
-    core.run()
+    core.cli()
     outputFile = "generation/" + input['userID'] + "/" + input['documentID'] + input['fileFormat']
     print(upload_blob('out.mp4', outputFile))
 
