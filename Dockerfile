@@ -57,21 +57,21 @@ RUN mkdir models
 
 #Download Models 
 # wget https://github.com/facefusion/facefusion-assets/releases/download/models/simswap_256.onnx -P .assets/models/ && \
-# 
-# 
+# wget https://github.com/facefusion/facefusion-assets/releases/download/models/codeformer.onnx -P .assets/models/ && \
+# wget https://github.com/facefusion/facefusion-assets/releases/download/models/open_nsfw.onnx -P .assets/models/ && \
+# wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_simswap.onnx -P .assets/models/ && \
+
 RUN wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_occluder.onnx -P .assets/models/ && \
 	wget https://github.com/facefusion/facefusion-assets/releases/download/models/face_parser.onnx -P .assets/models/ && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/codeformer.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/gfpgan_1.4.onnx -P .assets/models/ && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/open_nsfw.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/retinaface_10g.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/scrfd_2.5g.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/yoloface_8n.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/yunet_2023mar.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_w600k_r50.onnx -P .assets/models/ && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_simswap.onnx -P .assets/models/ && \
-    wget https://github.com/facefusion/facefusion-assets/releases/download/models/2dfan4.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/inswapper_128.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/2dfan4.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/gender_age.onnx -P .assets/models/
+
 
 ENTRYPOINT ./start.sh 

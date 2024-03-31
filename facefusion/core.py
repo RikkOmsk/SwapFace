@@ -16,7 +16,7 @@ import facefusion.globals
 from facefusion.face_analyser import get_one_face, get_average_face
 from facefusion.face_store import get_reference_faces, append_reference_face
 from facefusion import face_analyser, face_masker, content_analyser, config, process_manager, metadata, logger, wording
-from facefusion.content_analyser import analyse_image, analyse_video
+# from facefusion.content_analyser import analyse_image, analyse_video
 from facefusion.processors.frame.core import get_frame_processors_modules, load_frame_processor_module
 from facefusion.common_helper import create_metavar, get_first
 from facefusion.execution import encode_execution_providers, decode_execution_providers
@@ -186,7 +186,7 @@ def run(program : ArgumentParser) -> None:
 	logger.init(facefusion.globals.log_level)
 	if facefusion.globals.system_memory_limit > 0:
 		limit_system_memory(facefusion.globals.system_memory_limit)
-	if not pre_check() or not content_analyser.pre_check() or not face_analyser.pre_check() or not face_masker.pre_check():
+	if not pre_check() or not face_analyser.pre_check() or not face_masker.pre_check():
 		return
 	for frame_processor_module in get_frame_processors_modules(facefusion.globals.frame_processors):
 		if not frame_processor_module.pre_check():
@@ -258,8 +258,8 @@ def conditional_append_reference_faces() -> None:
 
 def process_image(start_time : float) -> None:
 	normed_output_path = normalize_output_path(facefusion.globals.target_path, facefusion.globals.output_path)
-	if analyse_image(facefusion.globals.target_path):
-		return
+	# if analyse_image(facefusion.globals.target_path):
+	# 	return
 	# copy image
 	process_manager.start()
 	temp_image_resolution = pack_resolution(restrict_image_resolution(facefusion.globals.target_path, unpack_resolution(facefusion.globals.output_image_resolution)))
@@ -294,8 +294,8 @@ def process_image(start_time : float) -> None:
 
 def process_video(start_time : float) -> None:
 	normed_output_path = normalize_output_path(facefusion.globals.target_path, facefusion.globals.output_path)
-	if analyse_video(facefusion.globals.target_path, facefusion.globals.trim_frame_start, facefusion.globals.trim_frame_end):
-		return
+	# if analyse_video(facefusion.globals.target_path, facefusion.globals.trim_frame_start, facefusion.globals.trim_frame_end):
+	# 	return
 	# clear temp
 	logger.debug(wording.get('clearing_temp'), __name__.upper())
 	clear_temp(facefusion.globals.target_path)
