@@ -67,6 +67,7 @@ RUN wget https://github.com/facefusion/facefusion-assets/releases/download/model
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_w600k_r50.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/arcface_simswap.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/2dfan4.onnx -P .assets/models/ && \
+    wget https://github.com/facefusion/facefusion-assets/releases/download/models/simswap_256.onnx -P .assets/models/ && \
     wget https://github.com/facefusion/facefusion-assets/releases/download/models/gender_age.onnx -P .assets/models/
 
 ENTRYPOINT ./start.sh 
