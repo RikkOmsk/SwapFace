@@ -37,6 +37,31 @@ def process_input(input):
     facefusion.globals.execution_providers = ['CUDAExecutionProvider']
     facefusion.globals.execution_thread_count = input['threadCount']
     facefusion.globals.execution_queue_count = input['queueCount']
+
+
+    facefusion.globals.face_selector_mode = "reference"
+    if (input['faceSelectorMode'] == 'reference'):
+        facefusion.globals.face_selector_mode = "reference"
+
+    if (input['faceSelectorMode'] == 'one'):
+        facefusion.globals.face_selector_mode = "one"
+
+    if (input['faceSelectorMode'] == 'many'):
+        facefusion.globals.face_selector_mode = "many"
+
+    facefusion.globals.reference_face_distance = 0.6
+    if (input['referenceFaceDistance'] > 0):
+        facefusion.globals.reference_face_distance = input['referenceFaceDistance']
+
+    facefusion.globals.face_detector_score = 0.5
+    if (input['faceDetectorScore'] > 0):
+        facefusion.globals.face_detector_score = input['faceDetectorScore']
+
+    facefusion.globals.face_landmarker_score = 0.5
+    if (input['faceLandmarkerScore'] > 0):
+        facefusion.globals.face_landmarker_score = input['faceLandmarkerScore']
+
+
     facefusion.processors.frame.globals.face_swapper_model = input['faceSwapperModel']
 
     if face == "face_enhancer":
@@ -51,7 +76,7 @@ def process_input(input):
     core.cli()
     outputFile = "generation/" + input['userID'] + "/" + input['documentID'] + input['fileFormat']
     print(upload_blob('out.mp4', outputFile))
-
+    os.remove('out.mp4')
 
     return {
         "success": "Start"

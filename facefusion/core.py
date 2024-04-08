@@ -132,12 +132,12 @@ def apply_args(program : ArgumentParser) -> None:
 		facefusion.globals.face_detector_size = args.face_detector_size
 	else:
 		facefusion.globals.face_detector_size = '640x640'
-	facefusion.globals.face_detector_score = args.face_detector_score
-	facefusion.globals.face_landmarker_score = args.face_landmarker_score
+	# facefusion.globals.face_detector_score = args.face_detector_score
+	# facefusion.globals.face_landmarker_score = args.face_landmarker_score
 	# face selector
-	facefusion.globals.face_selector_mode = args.face_selector_mode
+	# facefusion.globals.face_selector_mode = args.face_selector_mode
 	facefusion.globals.reference_face_position = args.reference_face_position
-	facefusion.globals.reference_face_distance = args.reference_face_distance
+	# facefusion.globals.reference_face_distance = args.reference_face_distance
 	facefusion.globals.reference_frame_number = args.reference_frame_number
 	# face mask
 	facefusion.globals.face_mask_types = args.face_mask_types
