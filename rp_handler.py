@@ -3,6 +3,7 @@ import os
 import sys
 import wget
 import facefusion.globals
+import shlex
 from facefusion.processors.frame import globals as frame_processors_globals
 from google.cloud import storage
 from facefusion import core
@@ -74,9 +75,15 @@ def process_input(input):
     
 
     core.cli()
+
+
+    command = shlex.split('ffmpeg -y -hwaccel cuda -i out.mp4 -acodec copy outExport.mp4')
+
+
     outputFile = "generation/" + input['userID'] + "/" + input['documentID'] + input['fileFormat']
-    print(upload_blob('out.mp4', outputFile))
+    print(upload_blob('outExport.mp4', outputFile))
     os.remove('out.mp4')
+    os.remove('outExport.mp4')
 
     return {
         "success": "Start"
