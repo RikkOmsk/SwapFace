@@ -39,9 +39,9 @@ def process_input(input):
     facefusion.globals.execution_queue_count = input['queueCount']
 
 
-    facefusion.globals.output_video_encoder = input['output_video_encoder']
-    facefusion.globals.output_video_preset = input['output_video_preset']
-    facefusion.globals.output_video_quality = input['output_video_quality']
+    facefusion.globals.output_video_encoder = "hevc_nvenc"
+    facefusion.globals.output_video_preset = "veryfast"
+    facefusion.globals.output_video_quality = 80
 
 
 
