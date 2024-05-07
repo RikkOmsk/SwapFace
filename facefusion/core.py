@@ -158,9 +158,9 @@ def apply_args(program : ArgumentParser) -> None:
 			facefusion.globals.output_image_resolution = args.output_image_resolution
 		else:
 			facefusion.globals.output_image_resolution = pack_resolution(output_image_resolution)
-	facefusion.globals.output_video_encoder = args.output_video_encoder
-	facefusion.globals.output_video_preset = args.output_video_preset
-	facefusion.globals.output_video_quality = args.output_video_quality
+	# facefusion.globals.output_video_encoder = args.output_video_encoder
+	# facefusion.globals.output_video_preset = args.output_video_preset
+	# facefusion.globals.output_video_quality = args.output_video_quality
 	if is_video(facefusion.globals.target_path):
 		output_video_resolution = detect_video_resolution(facefusion.globals.target_path)
 		output_video_resolutions = create_video_resolutions(output_video_resolution)
